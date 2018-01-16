@@ -1,6 +1,4 @@
-package az.rahil.restnew.az.rahil.restnew.product;
-
-import az.rahil.restnew.az.rahil.restnew.product.Model;
+package az.rahil.factorymethodpattern.product;
 
 public class Student implements Model {
     private String name;

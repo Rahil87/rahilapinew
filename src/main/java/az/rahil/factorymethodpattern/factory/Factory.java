@@ -1,7 +1,6 @@
-package az.rahil.restnew.az.rahil.restnew.factory;
+package az.rahil.factorymethodpattern.factory;
 
-import az.rahil.restnew.az.rahil.restnew.product.Model;
-
+import az.rahil.factorymethodpattern.product.Model;
 
 
 //Bu interface in iwi Modelin datalarini qaytaran metod generasiya etmekdir

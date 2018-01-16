@@ -1,4 +1,4 @@
-package az.rahil.restnew.az.rahil.restnew.product;
+package az.rahil.factorymethodpattern.product;
 
 public class Teacher implements Model {
 

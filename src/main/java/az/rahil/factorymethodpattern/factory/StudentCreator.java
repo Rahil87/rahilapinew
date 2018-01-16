@@ -1,13 +1,11 @@
-package az.rahil.restnew.az.rahil.restnew.factory;
+package az.rahil.factorymethodpattern.factory;
 
-import az.rahil.restnew.az.rahil.restnew.factory.Factory;
-import az.rahil.restnew.az.rahil.restnew.product.Model;
-import az.rahil.restnew.az.rahil.restnew.product.Student;
+import az.rahil.factorymethodpattern.product.Model;
+import az.rahil.factorymethodpattern.product.Student;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
-import java.util.List;
 
 public class StudentCreator implements Factory {
 
