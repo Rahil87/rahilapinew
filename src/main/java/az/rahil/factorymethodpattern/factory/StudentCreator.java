@@ -21,11 +21,10 @@ public class StudentCreator implements Factory {
     /*Bu metodun iwi konkrete(Student) modelin datalarini database(mysql-database) den getirerek
      Student()obyektine yigmaqdir*/
 
-        public List<Model> getListData() {
+        public List<? extends Model> getListData() {
         JdbcTemplate jdbcTemplate= new JdbcTemplate(dataSource);
         String query="SELECT name,surname,address,idStudent FROM studentdb.student";
-        List<Student>studentList=jdbcTemplate.query(query,new BeanPropertyRowMapper<>(Student.class));
-        return new Student();
+        return jdbcTemplate.query(query,new BeanPropertyRowMapper<>(Student.class));
     }
 
 

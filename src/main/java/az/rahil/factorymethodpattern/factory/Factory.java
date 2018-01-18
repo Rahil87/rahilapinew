@@ -9,5 +9,5 @@ import java.util.List;
 //Amma hansi classin datalarini qaytardigi melum deyil
 public interface Factory {
 
-     List<Model>getListData();
+     List<? extends Model>getListData();
 }
