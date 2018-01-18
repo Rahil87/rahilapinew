@@ -7,7 +7,7 @@
     <import resource="database.xml"/>
 
 
-    <bean  id="bean" class="az.rahil.factorymethodpattern.product.Student"></bean>
+    <bean  id="student" class="az.rahil.factorymethodpattern.product.Student"></bean>
 
 
 
