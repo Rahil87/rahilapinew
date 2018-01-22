@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util" xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs-common.xsd">
+
+
+    <context:component-scan base-package="az.rahil.factorymethodpattern*" />
+
+    <context:annotation-config />
+
+    <import resource="database.xml"></import>
+    <import resource="hibernate.xml"></import>
+
+    <import resource="classpath:META-INF/cxf/cxf.xml" />
+    <import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+
+    <!-- REST WEB SERVICE -->
+
+    <util:map id="jsonNamespaceMap" map-class="java.util.Hashtable">
+        <entry key="http://services.institute.com" value=""/>
+        <entry key="http://cxf.apache.org/bindings/xformat" value="cxf"/>
+    </util:map>
+
+    <bean id="jsonInputFactory" class="org.codehaus.jettison.mapped.MappedXMLInputFactory">
+        <constructor-arg ref="jsonNamespaceMap"/>
+    </bean>
+
+    <bean id="jsonOutputFactory" class="org.codehaus.jettison.mapped.MappedXMLOutputFactory">
+        <constructor-arg ref="jsonNamespaceMap"/>
+    </bean>
+
+    <bean id="jsonProvider" class="org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider"/>
+
+
+    <bean id="userRestWebServices"
+          class="az.rahil.factorymethodpattern.webservice.FactoryRest" abstract="true"/>
+
+    <jaxrs:server id="userWebServiceREST" address="/userApi">
+        <jaxrs:serviceBeans>
+            <ref bean="userRestWebServices"/>
+        </jaxrs:serviceBeans>
+        <jaxrs:extensionMappings>
+            <entry key="text" value="text/xml"/>
+            <entry key="xml" value="application/xml"/>
+            <entry key="json" value="application/json"/>
+        </jaxrs:extensionMappings>
+        <jaxrs:languageMappings/>
+        <jaxrs:properties>
+            <entry key="javax.xml.stream.XMLInputFactory">
+                <ref bean="jsonInputFactory"/>
+            </entry>
+            <entry key="javax.xml.stream.XMLOutputFactory">
+                <ref bean="jsonOutputFactory"/>
+            </entry>
+        </jaxrs:properties>
+        <jaxrs:providers>
+            <ref bean="jsonProvider"/>
+        </jaxrs:providers>
+    </jaxrs:server>
+
+
+</beans>
