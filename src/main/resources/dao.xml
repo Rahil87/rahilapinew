@@ -6,7 +6,7 @@
     <bean id="studentCreator" class="az.rahil.factorymethodpattern.factory.StudentCreator">
         <property name="dataSource" ref="dataSource"/>
     </bean>
-    <bean id="studentCreator2" class="az.rahil.factorymethodpattern.factory.StudentCreator" factory-method="getData"
+    <bean id="studentCreator2" class="az.rahil.factorymethodpattern.factory.StudentCreator" factory-method="getListData"
           factory-bean="studentCreator"></bean>
 
 

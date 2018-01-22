@@ -10,4 +10,5 @@ import java.util.List;
 public interface Factory {
 
      List<? extends Model>getListData();
+       Model checkUser(String name,String password);
 }

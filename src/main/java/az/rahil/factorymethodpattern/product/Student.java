@@ -22,4 +22,14 @@ public class Student implements Model {
 
     }
 
+    @Override
+    public String getSurname() {
+        return null;
+    }
+
+    @Override
+    public void setSurname(String surname) {
+
+    }
+
 }

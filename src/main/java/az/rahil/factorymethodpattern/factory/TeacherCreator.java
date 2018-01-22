@@ -7,13 +7,15 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 public class TeacherCreator implements  Factory {
-    @Override
-    public Model getData() {
 
-            Scanner scanner = new Scanner(System.in);
+ @Override
+    public List<? extends Model> getListData() {
+
+        Scanner scanner = new Scanner(System.in);
 
         try {
             System.out.println("Adi daxil edin:");
@@ -33,6 +35,12 @@ public class TeacherCreator implements  Factory {
             e.printStackTrace();
             System.out.println("xeta bas verdi!!!");
         }
-                return  new Teacher();
+        return (List<? extends Model>) new Teacher();
+
+    }
+
+    @Override
+    public Model checkUser(String name, String password) {
+        return null;
     }
 }
